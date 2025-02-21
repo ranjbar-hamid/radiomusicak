@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 import node from "@astrojs/node";
 
-// import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +17,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: node({
-    mode: "middleware",
-  }),
+  adapter: vercel(),
 });
