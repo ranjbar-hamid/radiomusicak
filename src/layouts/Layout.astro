@@ -1,17 +1,64 @@
 ---
-export const prerender = true;
+import Logo from "../../public/musicak.png";
+const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره ما", "ارتباط با ما"];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/musicak.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body>
-    <slot />
+  <body
+    class="container mx-auto bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+  >
+    <header>
+      <nav id="navbar" class="flex py-4 items-center justify-between">
+        <ul class="hidden md:flex gap-3 lg:hidden">
+          {
+            navItem.map((i) => (
+              <li>
+                <a>{i}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex items-center justify-between w-full md:w-auto">
+          <button id="navBtn" class="flex md:hidden">=</button>
+          <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
+        </div>
+      </nav>
+    </header>
+    <main class="flex">
+      <aside
+        class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none"
+      >
+        <ul class="flex flex-col gap-2 rounded">
+          {
+            navItem.map((i) => (
+              <li>
+                <a>{i}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+      <slot />
+    </main>
   </body>
 </html>
+<script>
+  const side = document.querySelector("aside");
+  document.getElementById("navBtn")?.addEventListener("click", () => {
+    side?.classList.contains("hidden")
+      ? (side?.classList.remove("hidden"),
+        side?.animate({ opacity: [0, 1] }, { duration: 400 }))
+      : (side?.animate({ opacity: 0 }, { duration: 400 }),
+        setTimeout(() => {
+          side?.classList.add("hidden");
+        }, 400));
+  });
+</script>
