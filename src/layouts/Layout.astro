@@ -19,7 +19,7 @@ const navItem = [
     <title>Astro Basics</title>
   </head>
   <body
-    class="container mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+    class="container font-vazir mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
   >
     <header>
       <nav id="navbar" class="flex py-4 items-center justify-between">
@@ -57,5 +57,25 @@ const navItem = [
   </body>
 </html>
 <script>
-  import { nav } from "../components/navjs";
+  const side = document.querySelector("aside");
+  document.getElementById("navBtn")?.addEventListener("click", () => {
+    side?.classList.contains("hidden")
+      ? (side?.classList.remove("hidden"),
+        side?.animate({ opacity: [0, 1] }, { duration: 400 }))
+      : (side?.animate({ opacity: 0 }, { duration: 400 }),
+        setTimeout(() => {
+          side?.classList.add("hidden");
+        }, 400));
+  });
+  document.querySelectorAll("img").forEach((i) => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=pic&id=" +
+        i.id,
+      { cache: "reload" }
+    )
+      .then((res) => res.json())
+      .then((r) => {
+        i.src = `data:image/jpeg;base64,${r.pic}`;
+      });
+  });
 </script>
