@@ -19,7 +19,7 @@ const navItem = [
     <title>Astro Basics</title>
   </head>
   <body
-    class="container mx-auto bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+    class="container mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
   >
     <header>
       <nav id="navbar" class="flex py-4 items-center justify-between">
@@ -40,7 +40,7 @@ const navItem = [
     </header>
     <main class="flex flex-col lg:flex-row">
       <aside
-        class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none"
+        class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none bg-gray-400"
       >
         <ul class="flex flex-col lg:sticky lg:top-0 gap-2 rounded">
           {
@@ -52,9 +52,7 @@ const navItem = [
           }
         </ul>
       </aside>
-      <section>
-        <slot />
-      </section>
+      <slot />
     </main>
   </body>
 </html>
