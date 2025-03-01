@@ -38,11 +38,11 @@ const navItem = [
         </div>
       </nav>
     </header>
-    <main class="flex flex-col">
+    <main class="flex flex-col lg:flex-row">
       <aside
         class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none"
       >
-        <ul class="flex flex-col gap-2 rounded">
+        <ul class="flex flex-col lg:sticky lg:top-0 gap-2 rounded">
           {
             navItem.map((i) => (
               <li>
@@ -52,19 +52,12 @@ const navItem = [
           }
         </ul>
       </aside>
-      <slot />
+      <section>
+        <slot />
+      </section>
     </main>
   </body>
 </html>
 <script>
-  const side = document.querySelector("aside");
-  document.getElementById("navBtn")?.addEventListener("click", () => {
-    side?.classList.contains("hidden")
-      ? (side?.classList.remove("hidden"),
-        side?.animate({ opacity: [0, 1] }, { duration: 400 }))
-      : (side?.animate({ opacity: 0 }, { duration: 400 }),
-        setTimeout(() => {
-          side?.classList.add("hidden");
-        }, 400));
-  });
+  import { nav } from "../components/navjs";
 </script>
