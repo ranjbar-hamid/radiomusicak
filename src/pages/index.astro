@@ -1,16 +1,15 @@
 ---
-import IMG from "../components/IMG";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
-// const f = await fetch(
-//   "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=5",
-//   { cache: "reload" }
-// );
-// const data = await f.json();
-const data = JSON.parse(
-  '[{"i":30,"title":"باران عشق","artist":"ناصر چشم آذر","album":"باران عشق","size":"79.0MB","genre":"پاپ","cast":652720034,"file":"https://drive.google.com/u/0/uc?id=15H3AAfWt2J63EKkTZZq0JK_cAQ4LOOAZ&export=download","picId":"18NxMTXGWx2w4HfiLHK4dNMbCas21jhZK","Pic":"https://lh3.google.com/u/0/d/18NxMTXGWx2w4HfiLHK4dNMbCas21jhZK","key":"rain of love بیکلام بی کلام"},{"i":29,"title":"قطره های باران","artist":"علیرضا قربانی","album":"قطره های باران","size":"74.8MB","genre":"سنتی ایرانی","cast":612045625,"file":"https://drive.google.com/u/0/uc?id=12rXGj-lRfZ_V-jI5bgOnG5nvzXefJ1ML&export=download","picId":"13iczNqKNQ3FTJov2RTz06--MX-CfGK8i","Pic":"https://lh3.google.com/u/0/d/13iczNqKNQ3FTJov2RTz06--MX-CfGK8i","key":"عای رضا قزبانی پور ناظری ها"},{"i":28,"title":"جان جوانی","artist":"ابی","album":"جان جوانی","size":"51.5MB","genre":"پاپ","cast":605926226,"file":"https://drive.google.com/u/0/uc?id=12uA0Vu7wqMG8io9MdyaBBzzMEIcx29lf&export=download","picId":"1h4MGtTf3jchG4UIdxkeA9l_hFheH9LEV","Pic":"https://lh3.google.com/u/0/d/1h4MGtTf3jchG4UIdxkeA9l_hFheH9LEV","key":"ابی ابراهیم حامدی"},{"i":27,"title":"Opus 2","artist":"Schiller","album":"Opus","size":"41.0MB","genre":"الکترونیک","cast":602594485,"file":"https://drive.google.com/u/0/uc?id=13RhmoT2Q7mQh3SSyjSzwKSYyLQLjGq25&export=download","picId":"149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","Pic":"https://lh3.google.com/u/0/d/149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","key":"شیلر اپوس"},{"i":26,"title":"Opus 1","artist":"Schiller","album":"Opus","size":"66.4MB","genre":"الکترونیک","cast":600302467,"file":"https://drive.google.com/u/0/uc?id=13VPDnh-M9ocPwe20uX6cFvHGQaV-60rL&export=download","picId":"149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","Pic":"https://lh3.google.com/u/0/d/149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","key":"شیلر اپوس"}]'
+const f = await fetch(
+  "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=5",
+  { cache: "reload" }
 );
+const data = await f.json();
+// const data = JSON.parse(
+//   '[{"i":30,"title":"باران عشق","artist":"ناصر چشم آذر","album":"باران عشق","size":"79.0MB","genre":"پاپ","cast":652720034,"file":"https://drive.google.com/u/0/uc?id=15H3AAfWt2J63EKkTZZq0JK_cAQ4LOOAZ&export=download","picId":"18NxMTXGWx2w4HfiLHK4dNMbCas21jhZK","Pic":"https://lh3.google.com/u/0/d/18NxMTXGWx2w4HfiLHK4dNMbCas21jhZK","key":"rain of love بیکلام بی کلام"},{"i":29,"title":"قطره های باران","artist":"علیرضا قربانی","album":"قطره های باران","size":"74.8MB","genre":"سنتی ایرانی","cast":612045625,"file":"https://drive.google.com/u/0/uc?id=12rXGj-lRfZ_V-jI5bgOnG5nvzXefJ1ML&export=download","picId":"13iczNqKNQ3FTJov2RTz06--MX-CfGK8i","Pic":"https://lh3.google.com/u/0/d/13iczNqKNQ3FTJov2RTz06--MX-CfGK8i","key":"عای رضا قزبانی پور ناظری ها"},{"i":28,"title":"جان جوانی","artist":"ابی","album":"جان جوانی","size":"51.5MB","genre":"پاپ","cast":605926226,"file":"https://drive.google.com/u/0/uc?id=12uA0Vu7wqMG8io9MdyaBBzzMEIcx29lf&export=download","picId":"1h4MGtTf3jchG4UIdxkeA9l_hFheH9LEV","Pic":"https://lh3.google.com/u/0/d/1h4MGtTf3jchG4UIdxkeA9l_hFheH9LEV","key":"ابی ابراهیم حامدی"},{"i":27,"title":"Opus 2","artist":"Schiller","album":"Opus","size":"41.0MB","genre":"الکترونیک","cast":602594485,"file":"https://drive.google.com/u/0/uc?id=13RhmoT2Q7mQh3SSyjSzwKSYyLQLjGq25&export=download","picId":"149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","Pic":"https://lh3.google.com/u/0/d/149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","key":"شیلر اپوس"},{"i":26,"title":"Opus 1","artist":"Schiller","album":"Opus","size":"66.4MB","genre":"الکترونیک","cast":600302467,"file":"https://drive.google.com/u/0/uc?id=13VPDnh-M9ocPwe20uX6cFvHGQaV-60rL&export=download","picId":"149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","Pic":"https://lh3.google.com/u/0/d/149dLU9If2DjkWrnP3zyWwhOm6tfy0E01","key":"شیلر اپوس"}]'
+// );
 ---
 
 <Layout>
@@ -20,11 +19,11 @@ const data = JSON.parse(
       data.map((d: any) => {
         return (
           <div class="flex flex-col p-2">
-            <IMG
-              className="aspect-square size-full object-cover rounded"
-              src={d.picId}
+            <img
+              class="aspect-square size-full object-cover rounded"
+              id={d.picId}
+              src=""
               alt={d.title}
-              client:load
             />
             <h1>{d.title}</h1>
             <h2>{d.artist}</h2>
@@ -39,3 +38,16 @@ const data = JSON.parse(
     }
   </section>
 </Layout>
+<script>
+  const imgList = document.querySelectorAll("img");
+  imgList.forEach((i) => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=pic&id=" +
+        i.id
+    )
+      .then((res) => res.json())
+      .then((r) => {
+        i.src = `data:image/jpeg;base64,${r.pic}`;
+      });
+  });
+</script>
