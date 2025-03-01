@@ -1,6 +1,12 @@
 ---
 import Logo from "../../public/musicak.png";
-const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره ما", "ارتباط با ما"];
+const navItem = [
+  { title: "موزیکک", path: "" },
+  { title: "آرشیو", path: "archive" },
+  { title: "هنرمندان", path: "artists" },
+  { title: "درباره ما", path: "about" },
+  { title: "ارتباط با ما", path: "contact" },
+];
 ---
 
 <!doctype html>
@@ -8,7 +14,7 @@ const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/public/musicak.png" />
+    <link rel="icon" href="musicak.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
@@ -21,7 +27,7 @@ const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره
           {
             navItem.map((i) => (
               <li>
-                <a>{i}</a>
+                <a href={i.path}>{i.title}</a>
               </li>
             ))
           }
@@ -32,7 +38,7 @@ const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره
         </div>
       </nav>
     </header>
-    <main class="flex">
+    <main class="flex flex-col">
       <aside
         class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none"
       >
@@ -40,7 +46,7 @@ const navItem = ["موزیکک", "آرشیو", "هنرمندان", "درباره
           {
             navItem.map((i) => (
               <li>
-                <a>{i}</a>
+                <a href={i.path}>{i.title}</a>
               </li>
             ))
           }
