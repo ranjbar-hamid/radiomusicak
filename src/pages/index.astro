@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import Logo from "../../public/musicak.png";
 
 const f = await fetch(
   "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=50",
@@ -22,7 +23,7 @@ const data2 = JSON.parse(
             <img
               class="aspect-square size-full object-cover rounded"
               id={d.picId}
-              src=""
+              src={Logo.src}
               alt={d.title}
             />
             <h1 class="text-base font-bold">{d.title}</h1>

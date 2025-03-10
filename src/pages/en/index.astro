@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Logo from "../../../public/musicak.png";
 import "../../styles/global.css";
 
 const f = await fetch(
@@ -22,7 +23,7 @@ const data2 = JSON.parse(
             <img
               class="aspect-square size-full object-cover rounded"
               id={d.picId}
-              src=""
+              src={Logo.src}
               alt={d.titleE}
             />
             <h1 class="text-base font-bold">{d.titleE}</h1>
