@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "vazir";
+  src: url("/public/font/Vazir.ttf");
+}
+
+@font-face {
+  font-family: "lalezar";
+  src: url("/public/font/Lalezar.ttf");
+}
+
+.font-vazir {
+  font-family: vazir;
+}
+
+.font-lalezar {
+    font-family: lalezar;
+  }

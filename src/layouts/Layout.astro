@@ -1,0 +1,87 @@
+---
+import Logo from "../../public/musicak.png";
+const navItem = [
+  { title: "موزیکک", path: "" },
+  { title: "آرشیو", path: "archive" },
+  { title: "هنرمندان", path: "artists" },
+  { title: "درباره ما", path: "about" },
+  { title: "ارتباط با ما", path: "contact" },
+];
+const { title, lang, dir } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="musicak.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="container font-vazir mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+  >
+    <header>
+      <nav id="navbar" class="flex py-4 px-2 items-center justify-between">
+        <!-- <ul class="hidden md:flex gap-3 lg:hidden">
+          {
+            navItem.map((i) => (
+              <li>
+                <a href={i.path}>{i.title}</a>
+              </li>
+            ))
+          }
+        </ul> -->
+        <div class="flex items-center justify-between w-full">
+          <!-- <button id="navBtn" class="flex md:hidden">=</button> -->
+          <a
+            href={lang == "fa" ? "/en" : "/"}
+            class="hover:scale-105 active:scale-95 transition-all duration-100"
+            >{lang == "fa" ? "EN" : "FA"}</a
+          >
+          <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
+        </div>
+      </nav>
+    </header>
+    <main class="flex flex-col lg:flex-row">
+      <!-- <aside
+        class="absolute p-4 me-2 md:static hidden lg:flex shadow md:shadow-none bg-gray-400"
+      >
+        <ul class="flex flex-col lg:sticky lg:top-0 gap-2 rounded">
+          {
+            navItem.map((i) => (
+              <li>
+                <a href={i.path}>{i.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside> -->
+      <slot />
+    </main>
+  </body>
+</html>
+<script>
+  // const side = document.querySelector("aside");
+  // document.getElementById("navBtn")?.addEventListener("click", () => {
+  //   side?.classList.contains("hidden")
+  //     ? (side?.classList.remove("hidden"),
+  //       side?.animate({ opacity: [0, 1] }, { duration: 400 }))
+  //     : (side?.animate({ opacity: 0 }, { duration: 400 }),
+  //       setTimeout(() => {
+  //         side?.classList.add("hidden");
+  //       }, 400));
+  // });
+  // document.querySelectorAll("img").forEach((i) => {
+  //   fetch(
+  //     "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=pic&id=" +
+  //       i.id,
+  //     { cache: "reload" }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((r) => {
+  //       i.src = `data:image/jpeg;base64,${r.pic}`;
+  //     });
+  // });
+</script>
