@@ -1,5 +1,6 @@
 ---
 import Logo from "../../public/musicak.png";
+import ClientRouter from "astro/components/ClientRouter.astro";
 const navItem = [
   { title: "موزیکک", path: "" },
   { title: "آرشیو", path: "archive" },
@@ -15,9 +16,27 @@ const { title, lang, dir } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="میکس آلبوم های موسیقی ایرانی و خارجی" />
     <link rel="icon" href="musicak.png" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta property="og:type" content="music" />
+    <meta property="og:title" content="Radio Musicak | رادیو موزیکک" />
+    <meta
+      property="og:description"
+      content="میکس آلبوم های موسیقی ایرانی و خارجی"
+    />
+    <meta property="og:image" content="musicak.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Radio Musicak | رادیو موزیکک" />
+    <meta
+      name="twitter:description"
+      content="میکس آلبوم های موسیقی ایرانی و خارجی"
+    />
+    <meta name="twitter:image" content="musicak.png" />
+    <link rel="canonical" href="https://radiomusicak.com" />
+    <meta property="og:url" content="https://radiomusicak.com" />
+
+    <ClientRouter />
   </head>
   <body
     class="container font-vazir mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
@@ -84,4 +103,9 @@ const { title, lang, dir } = Astro.props;
   //       i.src = `data:image/jpeg;base64,${r.pic}`;
   //     });
   // });
+  import { animate } from "motion";
+  const m = document.getElementsByTagName("main");
+  document.addEventListener("astro:before-preparation", (event) => {
+    animate(m[0], { opacity: 0.3, filter: "blur(0.4rem)" });
+  });
 </script>
