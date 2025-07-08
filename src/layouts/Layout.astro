@@ -54,12 +54,12 @@ const { title, lang, dir } = Astro.props;
         </ul> -->
         <div class="flex items-center justify-between w-full">
           <!-- <button id="navBtn" class="flex md:hidden">=</button> -->
+          <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
           <a
             href={lang == "fa" ? "/en" : "/"}
             class="hover:scale-105 active:scale-95 transition-all duration-100"
             >{lang == "fa" ? "EN" : "FA"}</a
           >
-          <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
         </div>
       </nav>
     </header>
