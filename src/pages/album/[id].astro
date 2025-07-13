@@ -8,7 +8,7 @@ const f = await fetch(
   { cache: "reload" }
 );
 const data = await f.json();
-const d = await data.find((item: any) => item?.i == id);
+const d = await data.find((item: any) => item?.link == id);
 ---
 
 <Layout title={d?.title} lang="fa" dir="rtl">
