@@ -12,17 +12,24 @@ const data = await f.json();
 
 <Layout title="رادیو موزیکک" lang="fa" dir="rtl">
   <section
-    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
+    class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
   >
-    <!-- <article class="col-span-full font-lalezar">خوش آمدید</article> -->
+    <iframe
+      id="player"
+      class="w-full h-50 col-span-full md:col-span-2 sticky top-0.5 z-20 rounded shadow"
+      width="100%"
+      src=`https://castbox.fm/app/castbox/player/id4804438/id${data[0]?.cast}?v=8.22.11&hide_list=1&autoplay=0`
+    ></iframe>
     {
       data.map((d: any) => {
         return (
           <a
             class="flex flex-col relative border-2 rounded overflow-hidden border-slate-300 dark:border-slate-600 hover:scale-105 transition-all duration-300"
-            href={"album/" + d.link}
+            data-cast={d.cast}
           >
-            <h1 class="z-10 absolute p-1.5 text-sm bg-gray-300/85 rounded-bl-sm text-gray-800 shadow">{d.title}</h1>
+            <h1 class="z-10 absolute p-1.5 text-sm bg-gray-300/85 rounded-bl-sm text-gray-800 shadow">
+              {d.title}
+            </h1>
             <img
               transition:name={"album" + d.i}
               class="aspect-square size-full object-cover"
@@ -37,3 +44,16 @@ const data = await f.json();
     }
   </section>
 </Layout>
+
+<script>
+  const links = document.querySelectorAll("section > a");
+  links.forEach((i) =>
+    i.addEventListener(
+      "click",
+      () =>
+        (document.getElementById("player").src =
+          `https://castbox.fm/app/castbox/player/id4804438/id${i.dataset.cast}?v=8.22.11&hide_list=1&autoplay=1`)
+    )
+  );
+  // links.forEach((i) => console.log(i.dataset.cast));
+</script>
