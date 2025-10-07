@@ -16,21 +16,24 @@ const { title, lang, dir } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="میکس آلبوم های موسیقی ایرانی و خارجی" />
+    <meta
+      name="description"
+      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
+    />
     <link rel="icon" href="musicak.png" />
     <title>{title}</title>
     <meta property="og:type" content="music" />
     <meta property="og:title" content="Radio Musicak | رادیو موزیکک" />
     <meta
       property="og:description"
-      content="میکس آلبوم های موسیقی ایرانی و خارجی"
+      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
     />
     <meta property="og:image" content="musicak.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Radio Musicak | رادیو موزیکک" />
     <meta
       name="twitter:description"
-      content="میکس آلبوم های موسیقی ایرانی و خارجی"
+      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
     />
     <meta name="twitter:image" content="musicak.png" />
     <link rel="canonical" href="https://radiomusicak.com" />
@@ -55,11 +58,11 @@ const { title, lang, dir } = Astro.props;
         <div class="flex items-center justify-between w-full">
           <!-- <button id="navBtn" class="flex md:hidden">=</button> -->
           <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
-          <a
+          <!-- <a
             href={lang == "fa" ? "/en" : "/"}
             class="hover:scale-105 active:scale-95 transition-all duration-100"
             >{lang == "fa" ? "EN" : "FA"}</a
-          >
+          > -->
         </div>
       </nav>
     </header>
