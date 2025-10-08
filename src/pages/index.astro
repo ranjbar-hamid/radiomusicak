@@ -15,6 +15,7 @@ const data = await f.json();
     class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
   >
     <div
+      id="pDiv"
       class="sticky w-full h-50 col-span-full md:col-span-2 top-0.5 z-20 rounded shadow backdrop-blur-lg"
     >
       <iframe
@@ -49,6 +50,14 @@ const data = await f.json();
 </Layout>
 
 <script>
+  import { scroll, animate } from "motion";
+  // scroll((p: any) => console.log(p));
+  const animation = animate(
+    "#pDiv",
+    { transform: ["scale(100%)", "scale(95%)"] },
+    { ease: "linear" }
+  );
+  scroll(animation);
   const links = document.querySelectorAll("section > a");
   links.forEach((i: any) =>
     i.addEventListener("click", () => {
