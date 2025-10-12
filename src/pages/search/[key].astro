@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+import PlayerFrame from "../../Item/PlayerFrame.astro";
+import SongCard from "../../Item/SongCard.astro";
+
+const { key } = Astro.params;
+
+const f = await fetch(
+  "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=50",
+  { cache: "reload" }
+);
+
+const rareData = await f.json();
+const data = rareData.filter((i: any) => i.genre == key);
+---
+
+<Layout title="رادیو موزیکک" lang="fa" dir="rtl" data={rareData}>
+  <section
+    class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
+  >
+    <PlayerFrame cast={data[0]?.cast} />
+    <SongCard data={data} />;
+  </section>
+</Layout>

@@ -1,0 +1,15 @@
+---
+const { cast } = Astro.props;
+---
+
+<div
+  id="pDiv"
+  class="sticky w-full h-50 col-span-full md:col-span-2 top-0.5 z-20 rounded shadow backdrop-blur-lg"
+>
+  <iframe
+    class="w-full h-50 opacity-80"
+    id="player"
+    width="100%"
+    src=`https://castbox.fm/app/castbox/player/id4804438/id${cast}?v=8.22.11&hide_list=1&autoplay=0`
+  ></iframe>
+</div>

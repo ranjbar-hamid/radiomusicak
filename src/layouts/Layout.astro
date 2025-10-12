@@ -1,13 +1,17 @@
 ---
 import Logo from "../../public/musicak.png";
+import Nav from "./Nav.astro";
+
+const { title, lang, dir, data } = Astro.props;
+
 const navItem = [
-  { title: "موزیکک", path: "" },
-  { title: "آرشیو", path: "archive" },
-  { title: "هنرمندان", path: "artists" },
-  { title: "درباره ما", path: "about" },
-  { title: "ارتباط با ما", path: "contact" },
+  ...new Set(data?.map((i: any) => (lang == "fa" ? i.genre : i.genreE))),
 ];
-const { title, lang, dir } = Astro.props;
+
+const meta = {
+  fa: "بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی",
+  en: "Best moments from albums and music tracks",
+};
 ---
 
 <!doctype html>
@@ -15,24 +19,21 @@ const { title, lang, dir } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
-    />
+    <meta name="description" content={lang == "fa" ? meta.fa : meta.en} />
     <link rel="icon" href="musicak.png" />
     <title>{title}</title>
     <meta property="og:type" content="music" />
     <meta property="og:title" content="Radio Musicak | رادیو موزیکک" />
     <meta
       property="og:description"
-      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
+      content={lang == "fa" ? meta.fa : meta.en}
     />
     <meta property="og:image" content="musicak.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Radio Musicak | رادیو موزیکک" />
     <meta
       name="twitter:description"
-      content="بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی"
+      content={lang == "fa" ? meta.fa : meta.en}
     />
     <meta name="twitter:image" content="musicak.png" />
     <link rel="canonical" href="https://radiomusicak.com" />
@@ -41,15 +42,31 @@ const { title, lang, dir } = Astro.props;
   <body
     class="container font-vazir mx-auto px-2 md:px-0 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
   >
-    <header>
-      <nav id="navbar" class="flex py-4 px-2 items-center justify-between">
-        <div class="flex items-center justify-between w-full">
-          <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
-        </div>
-      </nav>
-    </header>
+    <div class="flex py-4 items-center">
+      <header>
+        <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
+      </header>
+      <Nav navItem={navItem} />
+    </div>
     <main class="flex flex-col lg:flex-row">
       <slot />
     </main>
   </body>
 </html>
+
+<script>
+  import { scroll, animate } from "motion";
+  const animation = animate(
+    "#pDiv",
+    { transform: ["scale(100%)", "scale(95%)"] },
+    { ease: "linear" }
+  );
+  scroll(animation);
+  const links = document.querySelectorAll("section > a");
+  links.forEach((i: any) =>
+    i.addEventListener("click", () => {
+      const elm: any = document.getElementById("player");
+      elm.src = `https://castbox.fm/app/castbox/player/id4804438/id${i.dataset.cast}?v=8.22.11&hide_list=1&autoplay=1`;
+    })
+  );
+</script>
