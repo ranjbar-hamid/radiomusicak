@@ -15,7 +15,7 @@ const { data } = Astro.props;
         <img
           class="aspect-square size-full object-cover"
           id={d.picId}
-          src={"pic/" + d.picId}
+          src={"/pic/" + d.picId}
           alt={d.title}
           loading="lazy"
         />
