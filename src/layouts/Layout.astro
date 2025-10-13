@@ -9,8 +9,8 @@ const navItem = [
 ];
 
 const artists = [
-  ...new Set(data?.map((i: any) => (lang == "fa" ? i.artist : i.artistE)))
-]
+  ...new Set(data?.map((i: any) => (lang == "fa" ? i.artist : i.artistE))),
+];
 
 const meta = {
   fa: "بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی",
@@ -48,12 +48,20 @@ const meta = {
   >
     <div class="flex py-4 items-center">
       <header>
-        <img class="w-10 dark:invert" src={Logo.src} alt="Radio Musicak" />
+        <a href="/"
+          ><img
+            class="w-10 dark:invert"
+            src={Logo.src}
+            alt="Radio Musicak"
+          /></a
+        >
       </header>
       <Nav navItem={navItem} />
     </div>
-    <Nav navItem={artists} />
-    <main class="flex flex-col lg:flex-row">
+    <div class="flex">
+      <Nav navItem={artists} small />
+    </div>
+    <main class="flex mt-2 flex-col lg:flex-row">
       <slot />
     </main>
   </body>
