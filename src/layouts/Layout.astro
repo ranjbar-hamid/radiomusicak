@@ -8,6 +8,10 @@ const navItem = [
   ...new Set(data?.map((i: any) => (lang == "fa" ? i.genre : i.genreE))),
 ];
 
+const artists = [
+  ...new Set(data?.map((i: any) => (lang == "fa" ? i.artist : i.artistE)))
+]
+
 const meta = {
   fa: "بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی",
   en: "Best moments from albums and music tracks",
@@ -48,6 +52,7 @@ const meta = {
       </header>
       <Nav navItem={navItem} />
     </div>
+    <Nav navItem={artists} />
     <main class="flex flex-col lg:flex-row">
       <slot />
     </main>

@@ -10,12 +10,23 @@ const f = await fetch(
   "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=50",
   { cache: "reload" }
 );
-
 const rareData = await f.json();
-const data = rareData.filter((i: any) => i.genre == key);
+console.log(rareData);
+const data = rareData.filter(
+  (i: any) =>
+    i.genre?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.genreE?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.title?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.titleE?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.album?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.albumE?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.artist?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.artistE?.toString().toLowerCase().includes(key?.toLowerCase()) ||
+    i.key?.toString().toLowerCase().includes(key?.toLowerCase())
+);
 ---
 
-<Layout title="رادیو موزیکک" lang="fa" dir="rtl" data={rareData}>
+<Layout title={key} lang="fa" dir="rtl" data={rareData}>
   <section
     class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
   >
