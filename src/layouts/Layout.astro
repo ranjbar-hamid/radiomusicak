@@ -2,11 +2,11 @@
 import Logo from "../../public/musicak.png";
 import Nav from "./Nav.astro";
 
-const { title, lang, dir, data } = Astro.props;
+const { title, lang, data } = Astro.props;
 
 const navItem = [
   ...new Set(data?.map((i: any) => (lang == "fa" ? i.genre : i.genreE))),
-];
+]
 
 const artists = [
   ...new Set(data?.map((i: any) => (lang == "fa" ? i.artist : i.artistE))),
@@ -19,7 +19,7 @@ const meta = {
 ---
 
 <!doctype html>
-<html lang={lang} dir={dir}>
+<html lang={lang} dir={lang == "fa" ? "rtl" : "ltr"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

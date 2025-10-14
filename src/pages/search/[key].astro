@@ -11,7 +11,7 @@ const f = await fetch(
   { cache: "reload" }
 );
 const rareData = await f.json();
-console.log(rareData);
+
 const data = rareData.filter(
   (i: any) =>
     i.genre?.toString().toLowerCase().includes(key?.toLowerCase()) ||

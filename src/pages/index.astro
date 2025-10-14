@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-import Logo from "../../public/musicak.png";
 import PlayerFrame from "../Item/PlayerFrame.astro";
 import SongCard from "../Item/SongCard.astro";
 
@@ -12,7 +11,7 @@ const f = await fetch(
 const data = await f.json();
 ---
 
-<Layout title="رادیو موزیکک" lang="fa" dir="rtl" data={data}>
+<Layout title="رادیو موزیکک" lang="fa" data={data}>
   <section
     class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
   >
