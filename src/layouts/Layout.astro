@@ -1,6 +1,7 @@
 ---
 import Logo from "../../public/musicak.png";
 import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
 
 const { title, lang, data } = Astro.props;
 
@@ -72,6 +73,7 @@ const meta = {
     <main class="flex mt-2 flex-col lg:flex-row">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 
