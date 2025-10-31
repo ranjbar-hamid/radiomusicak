@@ -9,7 +9,7 @@ const f = await fetch(
   {
     cache: "force-cache",
     next: { revalidate: 3600 * 24 * 7 },
-  }
+  } as RequestInit
 );
 const data = await f.json();
 ---

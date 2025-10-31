@@ -8,7 +8,10 @@ const { key } = Astro.params;
 
 const f = await fetch(
   "https://script.google.com/macros/s/AKfycbz2ilrGauIAJoWzpZ3IcBv6gEato1hUWcC5p-1OJctJZcmwSIiLvrA5n5c8QZ9E5Mb3/exec?t=list&start=0&end=50",
-  { cache: "reload" }
+  {
+    cache: "force-cache",
+    next: { revalidate: 3600 * 24 * 7 },
+  } as RequestInit
 );
 const rareData = await f.json();
 
