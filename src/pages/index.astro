@@ -16,8 +16,27 @@ const data = await f.json();
 
 <Layout title="رادیو موزیکک" lang="fa" data={data}>
   <section
-    class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
+    class="grid grid-cols-3 relative md:grid-cols-4 lg:grid-cols-6 w-full gap-0.5"
   >
+    <div
+      class="col-span-full flex flex-col items-center justify-center md:col-span-4"
+    >
+      <h1 class="text-xl text-center">
+        بهترین لحظه‌های آلبوم‌ها و قطعات موسیقی
+      </h1>
+      <form
+        action="search/"
+        onsubmit="event.preventDefault(); window.location = this.action + document.getElementById('search').value;"
+        class="flex flex-row border-2 border-gray-500 w-full my-2 mx-auto md:w-2/5 rounded-full py-1 px-3"
+      >
+        <input required
+          id="search"
+          class="w-full outline-0"
+          placeholder="جستجو..."
+          type="search"
+        />
+      </form>
+    </div>
     <PlayerFrame cast={data[0]?.cast} />
     <SongCard data={data} />
   </section>
